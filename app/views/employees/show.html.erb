@@ -1,0 +1,63 @@
+<form method='post' action='/employees/update'>
+  <a type="Go back" href='/employees/' class='btn btn-default'>Go back</a>
+  <input type="hidden" name="id" value="<%=@record.id%>">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Code:</label>
+    <input type="text" name="code" class="form-control" id="employeesCode" placeholder="Code" value="<%= @record.code%>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">First Name:</label>
+    <input type="text" name="firstname" class="form-control" id="employeesFirstName" placeholder="First Name" value="<%= @record.firstname%>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Middle Name:</label>
+    <input type="text" name="middlename" class="form-control" id="employeesMiddleName" placeholder="Middle Name" value="<%= @record.middlename%>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Last Name:</label>
+    <input type="text" name="lastname" class="form-control" id="employeesLastName" placeholder="Last Name" value="<%= @record.lastname%>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">BirthDate:</label>
+    <input type="date" name="birthdate" class="form-control" id="employeesBirthDate" placeholder="Birth Date" value="<%= @record.birthdate%>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Address:</label>
+    <input type="text" name="address" class="form-control" id="employeesAddress" placeholder="Address" value="<%= @record.address%>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Contact Number:</label>
+    <input type="text" name="contactno" class="form-control" id="employeesContactNo" placeholder="Contact Number" value="<%= @record.contactno%>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Date Hired:</label>
+    <input type="date" name="datehired" class="form-control" id="employeesDateHired" placeholder="Date Hired" value="<%= @record.dateHired%>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Date Regular:</label>
+    <input type="date" name="dateregular" class="form-control" id="employeesDateRegular" placeholder="Date Regular" value="<%= @record.dateRegular%>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Date Fired:</label>
+    <input type="date" name="datefired" class="form-control" id="employeesDateFired" placeholder="Date Fired" value="<%= @record.dateFired%>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Deparment:</label>
+    <select class="form-control" id="employeesDepartment" name=departmentId>
+    <%for department in @lookupDepartments%>
+      <%if @record.departmentId==department.id%>
+      <option value=<%=department.id%> selected="selected"><%=department.name%></option>
+      <%else%>
+      <option value=<%=department.id%>><%=department.name%></option>
+      <%end%>
+    <%end%>
+  </select>
+  </div>
+  <button type="submit" class="btn btn-success">Update</button>
+  <% unless flash[:message].nil? %>
+  <div class="alert alert-<%= flash[:message]['success'] ==true ? 'success' : 'success' %>" role="alert">
+    <%= flash[:message]['message'] %>
+  </div>
+<% end %>
+</form>

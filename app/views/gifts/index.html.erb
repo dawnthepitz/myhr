@@ -1,0 +1,29 @@
+<div class='form-group'>
+<a type="Edit" href='/gifts/new' class='btn btn-success'>+New</a>
+<table class="table table-striped">
+	<thead>
+	<th></th>
+	<th></th>
+	<th>Name</th>
+	<th>Price</th>
+	</thead>
+	<tbody>
+		<% for gift in @Gifts%>
+			<tr>
+			<td>
+			<input type="button" value="Open" type="Edit" onclick="window.location.href='../gifts/<%=gift.id%>'" class='btn btn-primary'>
+			</td>
+			<td>
+			<input type="button" value="Delete" type="Edit" onclick="window.location.href='../gifts/delete?id=<%=gift.id%>'" class='btn btn-danger'>
+			</td>
+			</a>
+			<td>
+				<%= gift.name %>
+			</td>
+			<td>
+				Php <%= format('%.2f',gift.price) %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>

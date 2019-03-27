@@ -1,0 +1,36 @@
+<div class='form-group'>
+<h2 class="mt-4">Employees:</h2>
+<a type="Edit" href='/employees/new' class='btn btn-success'>+New</a>
+<table class="table table-striped">
+	<thead>
+	<th></th>
+	<th></th>
+	<th>Employee Code</th>
+	<th>Formal Name</th>
+	</thead>
+	<tbody>
+		<% for employee in @Employees%>
+			<tr>
+			<td>
+			<input type="button" value="Open" type="Edit" onclick="window.location.href='../employees/<%=employee.id%>'" class='btn btn-primary'>
+			</td>
+			<td>
+			<input type="button" value="Delete" type="Edit" onclick="window.location.href='../employees/delete?id=<%=employee.id%>'" class='btn btn-danger'>
+			</td>
+			</a>
+			<td>
+				<%= employee.code %>
+			</td>
+			<td>
+				<%= (employee.lastname+', '+employee.firstname)%>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>
+<% unless flash[:message].nil? %>
+  <div class="alert alert-<%= flash[:message]['success'] ==true ? 'success' : 'success' %>" role="alert">
+    <%= flash[:message]['message'] %>
+  </div>
+<% end %>
+</form>
